@@ -25,7 +25,9 @@
                         class="form-control @error('name')
                             is-invalid
                         @enderror"
-                        name="name">
+                        name="name"
+                        value="{{ @old('name') }}"
+                        >
                     @error('name')
 
                         <div class="invalid-feedback">
@@ -40,7 +42,9 @@
                         class="form-control @error('email')
                             is-invalid
                         @enderror"
-                        name="email">
+                        name="email"
+                        value="{{ @old('email') }}"
+                        >
                     @error('email')
 
                         <div class="invalid-feedback">
