@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Dashboard
-Route::get('/', function () {
-    return view('pages.dashboard', ['type_menu' => 'dashboard']);
+// Auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function () {
+        return view('pages.app.dashboard', ['type_menu' => 'dashboard']);
+    })->name('home');
 });
+
+Route::redirect('/', '/login');
