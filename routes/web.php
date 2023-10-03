@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.app.dashboard', ['type_menu' => 'dashboard']);
     })->name('home');
+    Route::resource('user', UserController::class);
+
 });
 
 Route::redirect('/', '/login');
