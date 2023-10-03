@@ -16,14 +16,15 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::when($request->input('name'), function ($query, $name) {
+        $name = $request->input('name');
+
+        $users = User::when($name, function ($query, $name) {
             return $query->where('name', 'like', '%' . $name . '%');
         })
             ->select('id', 'name', 'email', 'phone', DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'))
             ->orderBy('id', 'desc')
             ->paginate(10);
-        $type_menu = 'user';
-        return view('pages.users.index', compact('users', 'type_menu'));
+        return view('pages.users.index', compact('users', 'name'));
     }
 
     public function create()

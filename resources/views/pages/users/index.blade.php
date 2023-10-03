@@ -46,7 +46,7 @@
                                             <input type="text"
                                                 class="form-control"
                                                 placeholder="Search"
-                                                name="name">
+                                                name="name" value="{{ $name }}">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -106,7 +106,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $users->withQueryString()->links() }}
+                                    {{ $users->appends(request()->input())->links('layouts.pagination') }}
                                 </div>
                             </div>
                         </div>
