@@ -22,7 +22,8 @@ class UserController extends Controller
             ->select('id', 'name', 'email', 'phone', DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'))
             ->orderBy('id', 'desc')
             ->paginate(10);
-        return view('pages.users.index', compact('users'));
+        $type_menu = 'user';
+        return view('pages.users.index', compact('users', 'type_menu'));
     }
 
     public function create()
